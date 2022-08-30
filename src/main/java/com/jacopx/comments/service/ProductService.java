@@ -38,7 +38,7 @@ public class ProductService {
     }
 
     public List<Product> getNewProducts() {
-        return productRepository.findByExpiryDateAfter(LocalDateTime.now());
+        return productRepository.getNewProducts();
     }
 
 }

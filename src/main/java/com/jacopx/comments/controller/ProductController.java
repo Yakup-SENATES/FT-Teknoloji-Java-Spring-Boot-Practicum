@@ -42,7 +42,7 @@ public class ProductController {
         return productService.getOldProducts();
     }
 
-    //Son kullanma tarihi geçmemiş ürünleri listeleyen metot.
+    //Son kullanma tarihi geçmemiş ve null tarihli ürünleri listeleyen metot.
     @GetMapping("/new")
     public List<Product> getNewProducts() {
         return productService.getNewProducts();

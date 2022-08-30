@@ -2,6 +2,7 @@ package com.jacopx.comments.service;
 
 import com.jacopx.comments.entity.Product;
 import com.jacopx.comments.entity.ProductComment;
+import com.jacopx.comments.exception.UserNotFoundException;
 import com.jacopx.comments.repository.ProductCommentRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,11 @@ public class ProductCommentService {
 
 
     public List<ProductComment> findByUserId(Long userId) {
-        return productCommentRepository.findByUserId(userId);
+        List<ProductComment> commentList = productCommentRepository.findByUserId(userId);
+        if (commentList.isEmpty()) {
+            throw new UserNotFoundException("User not found");
+        }
+        return commentList;
     }
 
     public List<ProductComment> findByProductId(Long productId) {
